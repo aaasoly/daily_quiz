@@ -2,7 +2,6 @@
 
 export default function CreatProductUI(props) {
 
-
   return (
     <div>
       판매자 : <input type="text" onChange={props.onChangeSeller} /> <br/>
