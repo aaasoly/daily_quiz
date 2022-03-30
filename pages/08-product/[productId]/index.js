@@ -31,10 +31,10 @@ export default function FetchProductPage() {
 
   return (
     <div>
-      <div>판매자 : {data?.fetchProduct?.seller}</div>
-      <div>상품명 : {data?.fetchProduct?.name}</div>
-      <div>상품내용 : {data?.fetchProduct?.detail}</div>
-      <div>가격 : {data?.fetchProduct?.price}</div>
+      <div>판매자 : {data?.fetchProduct.seller}</div>
+      <div>상품명 : {data?.fetchProduct.name}</div>
+      <div>상품내용 : {data?.fetchProduct.detail}</div>
+      <div>가격 : {data?.fetchProduct.price}</div>
       <button onClick={onClickMove}>수정하러 이동하기</button>
     </div>
   )
