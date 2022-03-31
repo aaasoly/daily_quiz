@@ -11,7 +11,7 @@ const BodyWrapper = styled.div`
 `;
 
 const Body = styled.div`
-  height: 500px;
+  height: 600px;
 `;
 
 interface ILayoutProps {
