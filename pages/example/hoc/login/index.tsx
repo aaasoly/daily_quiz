@@ -38,7 +38,8 @@ export default function Login(){
     })
     const accessToken = result.data.loginUser.accessToken
     setAccessToken(accessToken)
-    localStorage.getItem("accessToken". accessToken)
+    localStorage.setItem("accessToken", accessToken)
+    alert("로그인에 성공하였습니다!!");
     router.push("/example/hoc/main")
   }
 
