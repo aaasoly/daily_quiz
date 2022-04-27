@@ -18,19 +18,21 @@ export default function ApolloSetting(props) {
 
   const errorLink = onError(({graphQLErrors, operation, forward})=>{
     if(graphQLErrors){
-      if(errorLink.extensions.code === "UNAUTHENTICATED"){
-        getAccessToken().then((newAccessToken) => {
-          setAccessToken(newAccessToken)
-
-          operation.setContext({
-            headers: {
-              ...operation.getContext().headers,
-              Authorization: `Bearer ${newAccessToken}`
-            }
+      for(const err of graphQLErrors){
+        if(err.extensions.code === "UNAUTHENTICATED"){
+          getAccessToken().then((newAccessToken) => {
+            setAccessToken(newAccessToken)
+  
+            operation.setContext({
+              headers: {
+                ...operation.getContext().headers,
+                Authorization: `Bearer ${newAccessToken}`
+              }
+            })
+  
+            return forward(operation)
           })
-
-          return forward(operation)
-        })
+        }
       }
     }
   })
@@ -42,7 +44,7 @@ export default function ApolloSetting(props) {
   });
 
   const client = new ApolloClient({
-    link: ApolloLink.from([uploadLink]),
+    link: ApolloLink.from([errorLink, uploadLink]),
     cache: new InMemoryCache(),
   });
 

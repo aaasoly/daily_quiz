@@ -72,6 +72,8 @@ export default function BasketPage(){
         return
       }
 
+      
+
     const { __typename, ...newEl } = el
     baskets.push(newEl)
     localStorage.setItem(pick, JSON.stringify(baskets))
